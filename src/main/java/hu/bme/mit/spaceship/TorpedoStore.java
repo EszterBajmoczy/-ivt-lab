@@ -18,14 +18,9 @@ public class TorpedoStore {
 
   private Random generator;  // SecureRandom is preferred to Random
 
-  public TorpedoStore(int numberOfTorpedos) {
-    try{
-      this.torpedoCount = numberOfTorpedos;
-      this.generator = SecureRandom.getInstanceStrong();
-    } catch (NoSuchAlgorithmException e) {
-      //error handling
-    }
-    
+  public TorpedoStore(int numberOfTorpedos) throws NoSuchAlgorithmException {
+    this.torpedoCount = numberOfTorpedos;
+    this.generator = SecureRandom.getInstanceStrong();
 
     // update failure rate if it was specified in an environment variable
     String failureEnv = System.getenv("IVT_RATE");
